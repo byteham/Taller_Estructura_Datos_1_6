@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include <stack>
 #include <string>
@@ -20,6 +19,19 @@ int prioridad(char op) {
 bool esOperador(char c) {
     return c == '+' || c == '-' ||
            c == '*' || c == '/' || c == '^';
+}
+
+// AGREGADO: cuenta los operadores aritmeticos (+, -, *, /, ^) de una expresion infija
+int contarOperadores(const string& expresion) {
+    int contador = 0;
+
+    for (int i = 0; i < (int)expresion.size(); i++) {
+        if (esOperador(expresion[i])) {
+            contador++;
+        }
+    }
+
+    return contador;
 }
 
 // Convierte una expresion infija a postfija
@@ -188,7 +200,8 @@ int main() {
         cout << "2. Infija a prefija\n";
         cout << "3. Evaluar expresion numerica\n";
         cout << "4. Mostrar ambas notaciones\n";
-        cout << "5. Salir\n";
+        cout << "5. Contar operadores\n";                 // AGREGADO
+        cout << "6. Salir\n";                             // antes era la 5
         cout << "Seleccione una opcion: ";
 
         if (!(cin >> opcion)) {
@@ -196,9 +209,9 @@ int main() {
             break;
         }
 
-        if (opcion == 5) break;
+        if (opcion == 6) break;                           // antes: opcion == 5
 
-        if (opcion < 1 || opcion > 5) {
+        if (opcion < 1 || opcion > 6) {                   // antes: opcion > 5
             cout << "Opcion no valida.\n";
             continue;
         }
@@ -206,6 +219,13 @@ int main() {
         cout << "Ingrese la expresion infija: ";
         cin >> ws;
         getline(cin, expresion);
+
+        // AGREGADO: la opcion 5 solo cuenta operadores, no convierte ni evalua
+        if (opcion == 5) {
+            cout << "Cantidad de operadores: "
+                 << contarOperadores(expresion) << "\n";
+            continue;
+        }
 
         try {
             string postfija = infijaAPostfija(expresion);
