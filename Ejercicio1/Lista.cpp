@@ -97,6 +97,34 @@ void ListaDoble::imprimirAtras() {
     cout << "NULL\n";
 }
 
+//Funcion agregada
+void ListaDoble::invertir() {
+    if (cabeza == nullptr || cabeza == cola) {
+        cout << "-> No hay nada que invertir (lista vacia o con un solo elemento).\n";
+        return;
+    }
+
+    Nodo* actual = cabeza;
+    Nodo* temporal = nullptr;
+
+    // Se recorre la lista intercambiando los punteros siguiente y anterior de cada nodo
+    while (actual != nullptr) {
+        temporal = actual->getAnterior();
+        actual->setAnterior(actual->getSiguiente());
+        actual->setSiguiente(temporal);
+
+        // Como ya se intercambiaron, el "anterior" es el siguiente original
+        actual = actual->getAnterior();
+    }
+
+    // Se intercambian cabeza y cola
+    temporal = cabeza;
+    cabeza = cola;
+    cola = temporal;
+
+    cout << "-> Lista invertida correctamente.\n";
+}
+
 ListaDoble::~ListaDoble() {
     Nodo* actual = cabeza;
     while (actual != nullptr) {
