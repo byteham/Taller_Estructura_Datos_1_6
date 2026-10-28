@@ -21,6 +21,8 @@ public:
     void eliminar(string n);
     void imprimirAdelante();
     void imprimirAtras();
+    //FUNCION AGREGADA
+    void invertir();          
 };
 
 #endif
