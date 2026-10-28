@@ -189,3 +189,19 @@ bool Pila::buscar(int objetivo)
    cima++;
    return encontrado;
 }
+////////////////////////////////////////////////////////////////////////
+// Name:       Pila::sumar()
+// Purpose:    Implementation of Pila::sumar()
+// Return:     int
+////////////////////////////////////////////////////////////////////////
+
+int Pila::sumar(void)
+{
+   int suma = 0;
+
+   for (int i = 0; i <= cima; i++) {
+       suma += *(datos + i);
+   }
+
+   return suma;
+}
