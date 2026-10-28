@@ -31,4 +31,7 @@ public:
 
   //metodo imprimir
   virtual void imprimir() = 0;
+//Agregado
+//metodo tamanio de la pila
+  virtual int sizePila() = 0; 
 };
