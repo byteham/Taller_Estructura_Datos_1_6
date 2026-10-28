@@ -14,7 +14,10 @@ Fecha: 00/10/2026                Erick Sabando, Adrian Toapanta
 #include "Persona.h"
 
 //constructor
-Pila::Pila() {}
+Pila::Pila() {
+  this->tope = nullptr;            // <-- AGREGADO
+  this->tamanio = 0;               // <-- AGREGADO
+}
 
 //desctructor
 Pila::~Pila(){
@@ -29,6 +32,7 @@ void Pila::apilar(const Persona &p) {
   Nodo *nuevo = new Nodo(p);
   nuevo->setSiguiente(this->tope);
   this->tope = nuevo;
+  this->tamanio++;                 // <-- AGREGADO
 }
 
 //metodo eliminar
@@ -39,6 +43,7 @@ void Pila::desapilar() {
   }
   Nodo *temp = this->tope;
   this->tope= this->tope->getSiguiente();
+  this->tamanio--;                 // <-- AGREGADO
   std::cout<<"Desapilado con exito" << std::endl;
   delete temp;
 }
@@ -82,3 +87,8 @@ bool Pila::buscar(const std::string &cedula) {
   std::cout<<"Persona con la cedula: " << cedula << " no encontrada" << std::endl;
   return false;
 }
+
+//metodo tamanio                   // <-- AGREGADO
+int Pila::sizePila() {             // <-- AGREGADO
+  return this->tamanio;            // <-- AGREGADO
+}                                  // <-- AGREGADO
