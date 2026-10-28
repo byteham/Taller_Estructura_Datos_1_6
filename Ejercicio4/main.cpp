@@ -12,6 +12,7 @@ int main() {
     insertar(frente, fin, 20);
     insertar(frente, fin, 30);
     imprimir(frente);
+    cout << "Elementos: " << contarElementos(frente) << endl;   // AGREGADO (3)
 
     cout << "Buscar 20: ";
     if (buscar(frente, 20)) {
@@ -23,6 +24,7 @@ int main() {
     cout << "Eliminar el primero (10):\n";
     eliminar(frente, fin);
     imprimir(frente);
+    cout << "Elementos: " << contarElementos(frente) << endl;   // AGREGADO (2)
 
     cout << "Buscar 10: ";
     if (buscar(frente, 10)) {
