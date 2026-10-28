@@ -2,6 +2,7 @@
 #define LISTADOBLECIRCULAR_H
 
 #include <iostream>
+#include <stdexcept> //agregado
 #include "Nodo.h"
 
 using namespace std;
@@ -21,6 +22,7 @@ public:
     Nodo<T>* buscar(T dato);
     void eliminar(T dato);
     void imprimir();
+    T obtenerEnPosicion(int pos);   // <-- AGREGADO
 
 private:
     Nodo<T>* cabeza;
@@ -187,6 +189,37 @@ void ListaDobleCircular<T>::imprimir()
     } while (actual != cabeza);
 
     cout << endl;
+}
+template <typename T>
+T ListaDobleCircular<T>::obtenerEnPosicion(int pos)
+{
+    if (pos < 0 || pos >= tamanio)
+    {
+        throw out_of_range("Posicion invalida");
+    }
+
+    Nodo<T>* actual;
+
+    if (pos <= tamanio / 2)
+    {
+        // La posicion esta en la primera mitad: se recorre desde la cabeza
+        actual = cabeza;
+        for (int i = 0; i < pos; i++)
+        {
+            actual = actual->getSiguiente();
+        }
+    }
+    else
+    {
+        // La posicion esta en la segunda mitad: se recorre desde el final hacia atras
+        actual = cabeza->getAnterior();
+        for (int i = tamanio - 1; i > pos; i--)
+        {
+            actual = actual->getAnterior();
+        }
+    }
+
+    return actual->getDato();
 }
 
 #endif
