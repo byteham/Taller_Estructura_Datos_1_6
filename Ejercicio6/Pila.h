@@ -24,6 +24,7 @@ public:
    bool estaVacia(void);
    void imprimir(void);
    bool buscar(int objetivo);
+   int sumar(void);                  // <-- AGREGADO
 
 protected:
 private:
