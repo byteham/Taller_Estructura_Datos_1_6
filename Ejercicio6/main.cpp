@@ -16,7 +16,8 @@ int main() {
         cout << "2. Eliminar elemento (Cima)" << endl;
         cout << "3. Buscar elemento" << endl;
         cout << "4. Imprimir pila" << endl;
-        cout << "5. Salir" << endl;
+        cout << "5. Sumar elementos" << endl;          // AGREGADO
+        cout << "6. Salir" << endl;                    // antes era la 5
         cout << "Seleccione una opcion: ";
         cin >> opcion;
 
@@ -61,7 +62,15 @@ int main() {
                 }
                 break;
 
-            case 5:
+            case 5:                                    // AGREGADO
+                if (miPila.estaVacia()) {
+                    cout << "-> La pila esta vacia, la suma es 0." << endl;
+                } else {
+                    cout << "-> La suma de los elementos es: " << miPila.sumar() << endl;
+                }
+                break;
+
+            case 6:                                    // antes era case 5
                 cout << "Saliendo del programa..." << endl;
                 break;
 
@@ -69,7 +78,7 @@ int main() {
                 cout << "Opcion invalida. Intente de nuevo." << endl;
                 break;
         }
-    } while (opcion != 5);
+    } while (opcion != 6);                             // antes: opcion != 5
 
     return 0;
 }
